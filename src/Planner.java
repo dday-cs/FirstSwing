@@ -34,6 +34,8 @@ public class Planner extends JFrame{
     
     private JButton btnSummary;
     private JButton btnClear;
+ 
+    private JTextArea tSummary;
     
     public Planner(){
         setTitle("Event Planner Pro");
@@ -74,6 +76,13 @@ public class Planner extends JFrame{
         buttonPanel.add(btnSummary);buttonPanel.add(btnClear);
         add(buttonPanel, BorderLayout.SOUTH);
         
+        //The Summary
+        //outputPanel.setLayout(new FlowLayout());
+        tSummary = new JTextArea(12,25);
+        outputPanel = new JPanel();
+        outputPanel.add(tSummary);
+        add(outputPanel, BorderLayout.CENTER);
+                
         
         setVisible(true);
     }
