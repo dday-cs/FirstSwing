@@ -1,4 +1,7 @@
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.*;
 
 /*
@@ -29,12 +32,15 @@ public class Planner extends JFrame{
     private JCheckBox ckPhoto;
     private JCheckBox ckDJ;
     
+    private JButton btnSummary;
+    private JButton btnClear;
+    
     public Planner(){
         setTitle("Event Planner Pro");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(350,500);
+        setSize(500,600);
         setLocationRelativeTo(null);
-        
+        setLayout(new BorderLayout());
         //The Form Panel
         lblName = new JLabel("Event Name");
         tfName = new JTextField(15);
@@ -53,14 +59,23 @@ public class Planner extends JFrame{
         ckDJ = new JCheckBox("DJ");
         
         //What will be displayed
+        formPanel.setLayout(new GridLayout(0,3));
         formPanel.add(lblName);formPanel.add(lblType);formPanel.add(lblGuests);
         formPanel.add(tfName);formPanel.add(eventType);formPanel.add(questsSpn);
         formPanel.add(lblServices);
         formPanel.add(ckCatering);formPanel.add(ckPhoto);formPanel.add(ckDJ);
-        add(formPanel);
+        add(formPanel,BorderLayout.NORTH);
+        
+        //The Button Panel
+        //buttonPanel.setLayout(new FlowLayout());
+        btnSummary = new JButton("Generate Summary");
+        btnClear = new JButton("Clear");
+        buttonPanel = new JPanel();
+        buttonPanel.add(btnSummary);buttonPanel.add(btnClear);
+        add(buttonPanel, BorderLayout.SOUTH);
         
         
-        
+        setVisible(true);
     }
     
 }
