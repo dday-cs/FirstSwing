@@ -35,6 +35,7 @@ public class Planner extends JFrame{
         setSize(350,500);
         setLocationRelativeTo(null);
         
+        //The Form Panel
         lblName = new JLabel("Event Name");
         tfName = new JTextField(15);
         lblType = new JLabel("Event type");
@@ -57,6 +58,9 @@ public class Planner extends JFrame{
         formPanel.add(lblServices);
         formPanel.add(ckCatering);formPanel.add(ckPhoto);formPanel.add(ckDJ);
         add(formPanel);
+        
+        
+        
     }
     
 }
