@@ -19,6 +19,7 @@ public class Planner extends JFrame{
     private JLabel lblName;
     private JLabel lblType;
     private JLabel lblGuests;
+    private JLabel lblServices;
     
     private JTextField tfName;
     private JComboBox eventType;
@@ -33,7 +34,7 @@ public class Planner extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(350,500);
         setLocationRelativeTo(null);
-            
+        
         lblName = new JLabel("Event Name");
         tfName = new JTextField(15);
         lblType = new JLabel("Event type");
@@ -44,12 +45,17 @@ public class Planner extends JFrame{
         questsSpn = new JSpinner(guests);
         formPanel = new JPanel();
         
+        //Check boxes with options
+        lblServices = new JLabel("Optional Services");
         ckCatering = new JCheckBox("Catering");
         ckPhoto = new JCheckBox("Photography");
         ckDJ = new JCheckBox("DJ");
         
+        //What will be displayed
         formPanel.add(lblName);formPanel.add(lblType);formPanel.add(lblGuests);
         formPanel.add(tfName);formPanel.add(eventType);formPanel.add(questsSpn);
+        formPanel.add(lblServices);
+        formPanel.add(ckCatering);formPanel.add(ckPhoto);formPanel.add(ckDJ);
         add(formPanel);
     }
     
