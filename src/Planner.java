@@ -2,8 +2,9 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -39,6 +40,7 @@ public class Planner extends JFrame{
     
     private JScrollPane scrollPane;
     
+    private Summary summary;
     public Planner(){
         setTitle("Event Planner Pro");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -105,7 +107,40 @@ public class Planner extends JFrame{
         add(outputPanel, BorderLayout.SOUTH);
         add(buttonPanel, BorderLayout.CENTER);
         
+        btnSummary.addActionListener(new btnSummary());
+        btnClear.addActionListener(new btnClearClick());
         setVisible(true);
+    }
+    
+    public class btnSummary implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            String eventName = tfName.getText();
+            String type = eventType.getSelectedItem().toString();
+            int guests = (int) questsSpn.getValue();
+            boolean cater = ckCatering.isSelected();
+            boolean photo = ckPhoto.isSelected();
+            boolean dj = ckDJ.isSelected();
+            
+            summary = new Summary(eventName, type, guests, cater, photo, dj);
+            tSummary.setText(summary.toString());
+        }
+    }
+    
+    public class btnClearClick implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            tfName.setText("");
+            eventType.setSelectedIndex(0);
+            questsSpn.setValue(50);
+            
+            ckCatering.setSelected(false);
+            ckDJ.setSelected(false);
+            ckPhoto.setSelected(false);
+            
+            tSummary.setText("");
+        }
+        
     }
     
 }
