@@ -43,6 +43,7 @@ public class Planner extends JFrame{
         setSize(500,600);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
+        
         //The Form Panel
         lblName = new JLabel("Event Name");
         tfName = new JTextField(15);
@@ -61,12 +62,19 @@ public class Planner extends JFrame{
         ckDJ = new JCheckBox("DJ");
         
         //What will be displayed
-        formPanel.setLayout(new GridLayout(0,3));
-        formPanel.add(lblName);formPanel.add(lblType);formPanel.add(lblGuests);
-        formPanel.add(tfName);formPanel.add(eventType);formPanel.add(questsSpn);
-        formPanel.add(lblServices);
-        formPanel.add(ckCatering);formPanel.add(ckPhoto);formPanel.add(ckDJ);
-        add(formPanel,BorderLayout.NORTH);
+        formPanel.setLayout(new GridLayout(0,2));
+        formPanel.add(lblName);
+        formPanel.add(tfName);
+        
+        formPanel.add(lblType);
+        formPanel.add(eventType);
+        
+        formPanel.add(lblGuests);
+        formPanel.add(questsSpn);
+        
+        formPanel.add(ckCatering);
+        formPanel.add(ckDJ);
+        formPanel.add(ckPhoto);
         
         //The Button Panel
         //buttonPanel.setLayout(new FlowLayout());
@@ -81,9 +89,10 @@ public class Planner extends JFrame{
         tSummary = new JTextArea(12,25);
         outputPanel = new JPanel();
         outputPanel.add(tSummary);
-        add(outputPanel, BorderLayout.CENTER);
-                
         
+                
+        add(formPanel,BorderLayout.NORTH);
+        add(outputPanel, BorderLayout.CENTER);
         setVisible(true);
     }
     
