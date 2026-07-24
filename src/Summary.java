@@ -75,7 +75,9 @@ public class Summary {
     @Override
     public String toString(){
         return "====Event Summary====\n\n" + getEventName()
-                + "\nEvent Type: " + getEventType() + "\nGuests:" + getGuestNumb() + "\nCaterinig: " + isCatering()
-                + "\nPhotography: " + isPhoto() + "\nDJ: " + isDJ();
+                + "\nEvent Type: " + getEventType() + "\nGuests:" + getGuestNumb() + 
+                "\nCatering: " + (Catering ? "Yes" : "No")
+                + "\nPhotography: " + (Photo ? "Yes" : "No") 
+                + "\nDJ: " + (DJ ? "Yes" : "No");
     }
 }
