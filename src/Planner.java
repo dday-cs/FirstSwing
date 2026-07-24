@@ -37,12 +37,14 @@ public class Planner extends JFrame{
  
     private JTextArea tSummary;
     
+    private JScrollPane scrollPane;
+    
     public Planner(){
         setTitle("Event Planner Pro");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,600);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
+        
         
         //The Form Panel
         lblName = new JLabel("Event Name");
@@ -51,9 +53,9 @@ public class Planner extends JFrame{
         String[] events = {"Conference","Social picnic","School Meeting"};
         eventType = new JComboBox<String>(events);
         lblGuests = new JLabel("Number of Guests");
-        SpinnerNumberModel guests = new SpinnerNumberModel(150, 150, 300, 1);
+        SpinnerNumberModel guests = new SpinnerNumberModel(100, 50, 200, 1);
         questsSpn = new JSpinner(guests);
-        formPanel = new JPanel();
+        
         
         //Check boxes with options
         lblServices = new JLabel("Optional Services");
@@ -61,8 +63,17 @@ public class Planner extends JFrame{
         ckPhoto = new JCheckBox("Photography");
         ckDJ = new JCheckBox("DJ");
         
+        btnSummary = new JButton("Generate Summary");
+        btnClear = new JButton("Clear");
+        
+        
+        tSummary = new JTextArea(12,25);
+        scrollPane = new JScrollPane(tSummary);
+        
+        
         //What will be displayed
-        formPanel.setLayout(new GridLayout(0,2));
+        formPanel = new JPanel();
+        formPanel.setLayout(new GridLayout(0,1));
         formPanel.add(lblName);
         formPanel.add(tfName);
         
@@ -72,27 +83,28 @@ public class Planner extends JFrame{
         formPanel.add(lblGuests);
         formPanel.add(questsSpn);
         
+        formPanel.add(lblServices);
         formPanel.add(ckCatering);
-        formPanel.add(ckDJ);
         formPanel.add(ckPhoto);
         
-        //The Button Panel
-        //buttonPanel.setLayout(new FlowLayout());
-        btnSummary = new JButton("Generate Summary");
-        btnClear = new JButton("Clear");
+        formPanel.add(ckDJ);
+        
         buttonPanel = new JPanel();
-        buttonPanel.add(btnSummary);buttonPanel.add(btnClear);
-        add(buttonPanel, BorderLayout.SOUTH);
+        buttonPanel.setLayout(new FlowLayout());
+        buttonPanel.add(btnSummary);
+        buttonPanel.add(btnClear);
         
         //The Summary
-        //outputPanel.setLayout(new FlowLayout());
-        tSummary = new JTextArea(12,25);
         outputPanel = new JPanel();
-        outputPanel.add(tSummary);
+        //outputPanel.add(tSummary);
+        outputPanel.add(scrollPane);
         
+        setLayout(new BorderLayout());
                 
         add(formPanel,BorderLayout.NORTH);
-        add(outputPanel, BorderLayout.CENTER);
+        add(outputPanel, BorderLayout.SOUTH);
+        add(buttonPanel, BorderLayout.CENTER);
+        
         setVisible(true);
     }
     
